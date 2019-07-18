@@ -3,9 +3,9 @@ FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. S
 
 BEFORE BEGINNING PIPELINE
 1. Run transfer_fMRI_data.sh for each subject:
-  *Transfers data from BIDS folder on Rolando server to study folder on Discovery, and swaps out SIDs in filenames with subject numbers
-  *You will be prompted for your Rolando password, which is by default Change!t
-  *Script handles one subject at a time
+  * Transfers data from BIDS folder on Rolando server to study folder on Discovery, and swaps out SIDs in filenames with subject numbers
+  * You will be prompted for your Rolando password, which is by default Change!t
+  * Script handles one subject at a time
 2. Run unzip_files.sh
     *Unzips anatomical & functional niftis so you can open them in SPM (step 3)
     *Script can handle as many subjects as you specify
