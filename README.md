@@ -1,5 +1,5 @@
 # FSL-rest-pipeline-BIDS
-FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. Set up to work with BIDS format data. Follow steps below carefully.
+FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. Work with BIDS format data. *Follow steps below carefully.*
 
 BEFORE BEGINNING PIPELINE
 1. Run setup/transfer_fMRI_data.sh for each subject:
@@ -25,7 +25,38 @@ PIPELINE STEPS
     * To run script faster, submit as job using jobs/strip_skulls.pbs
       * Discovery can handle all subjects at once
 2. Run 2_segment_tissue.sh
+    * Generates white matter & CSF volumes from anatomical images for later use in making nuisance regressors
+    * To run script faster, submit as job using jobs/segment_tissue.pbs
+      * Discovery can handle all subjects at once
 3. Run 3_preproc.sh
+    * Applies the following preprocessing steps to EPIs for all runs specified in script:
+      * removal of low-frequency noise below 0.009 Hz with a high-pass filter
+      * motion correction using MCFLIRT
+      * skull-stripping using BET
+      * spatial smoothing with a 6mm radius
+      * registration to the anatomical image using BBR
+    * Parameters can be tweaked if needed
+    * Fills out a copy of templates/preproc.fsf for each subject & run
+    * To run script faster, submit as job using jobs/preproc.pbs
+      * Discovery can handle all subjects at once
 4. Run 4_make_nuisance.sh
+    * Creates the following nuisance regressors from preprocessed EPIs for all runs specified in script
+      * 6 motion parameters
+      * motion outliers
+      * CSF signal
+      * White matter signal
+      * Global brain signal
+    * Nuisance regressors can be omitted or included as needed
+    * To run script faster, submit as job using jobs/preproc.pbs
+      * Discovery can handle UP TO 10 SUBJECTS AT ONCE (if you need to run more subjects, submit them in a separate job)
+    * To check for subjects you may want to exclude from analysis due to too many motion outliers, run QA/check_motion.sh
 5. Run 5_clean_nuisance.sh
+    * Regresses out above nuisance variables in GLM & scrubs motion outliers
+    * Fills out a copy of templates/preproc.fsf for each subject & run
+    * To run script faster, submit as job using jobs/preproc.pbs
+      * Discovery can handle UP TO 10 SUBJECTS AT ONCE (if you need to run more subjects, submit them in a separate job)
+    * To check that cleaned EPIs were successfully output, run QA/check_GLM_output
 6. Run 6_extract_roi_timecourses.sh
+    * Extracts activation time courses from each roi in ROIs folder
+    * To run script faster, submit as job using jobs/preproc.pbs
+      * Discovery can handle only ONE SUBJECT AT A TIME (if you need to run more subjects, submit them in a separate job)
