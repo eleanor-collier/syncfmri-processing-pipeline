@@ -1,5 +1,5 @@
 # FSL-rest-pipeline-BIDS
-FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. Works with BIDS format data. *Follow steps below carefully.*
+FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. Works with BIDS format data. Scripts are written in bash. *Follow steps below carefully.*
 
 BEFORE BEGINNING PIPELINE
 1. Copy this repository to your project's scripts folder on Discovery
