@@ -63,4 +63,4 @@ PIPELINE STEPS
 6. Run 6_extract_roi_timecourses.sh
     * Extracts activation time courses from each roi in ROIs folder
     * To run script faster, submit as job using mksub jobs/extract_roi_timecourses.pbs
-      * Discovery can handle only ONE SUBJECT PER JOB
+      * Discovery can handle only ONE SUBJECT PER JOB. Do NOT try to run more or you will start crashing nodes and the Discovery folks will get quite upset at you
