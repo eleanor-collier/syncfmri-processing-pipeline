@@ -1,5 +1,5 @@
 # FSL-rest-pipeline-BIDS
-FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. Work with BIDS format data. *Follow steps below carefully.*
+FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. Works with BIDS format data. *Follow steps below carefully.*
 
 BEFORE BEGINNING PIPELINE
 1. Copy this repository to your project's scripts folder on Discovery
@@ -51,7 +51,7 @@ PIPELINE STEPS
     * Nuisance regressors can be omitted or included as needed
     * To run script faster, submit as job using jobs/make_nuisance.pbs
       * Discovery can handle UP TO 25 RUNS PER JOB (so if each subject has 3 runs, run max 8 subjects per job)
-    * To check for subjects you may want to exclude from analysis due to too many motion outliers, run QA/check_motion.sh
+    * To check for subjects you may want to exclude from analysis due to too many motion outliers, run QA/check_motion_outliers.sh
 5. Run 5_clean_nuisance.sh
     * Regresses out above nuisance variables in GLM & scrubs motion outliers
     * Fills out a copy of templates/preproc.fsf for each subject & run
