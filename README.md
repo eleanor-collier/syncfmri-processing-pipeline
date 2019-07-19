@@ -1,5 +1,6 @@
 # FSL-rest-pipeline-BIDS
-FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. Works with BIDS format data. Scripts are written in bash. Includes job scripts to run batches of subjects on Dartmouth's Discovery Cluster. *Follow steps below carefully.*
+FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. Works with BIDS format data. Scripts are written in bash. Includes job scripts to run batches of subjects on Dartmouth's Discovery Cluster. For details on how to used Discovery, see here: http://www.dartmouth-socialneurolab.com/the-cluster
+*Follow steps below carefully.*
 
 BEFORE BEGINNING PIPELINE
 1. Copy this repository to your project's scripts folder on Discovery
