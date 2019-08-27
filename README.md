@@ -18,6 +18,7 @@ BEFORE BEGINNING PIPELINE
 6. Run setup/zip_files.sh
     * Zips anatomical & functional niftis again for FSL pipeline
     * Script can handle as many subjects as you specify
+7. Make sure FSL is loaded before running the following scripts
 
 
 PIPELINE STEPS
