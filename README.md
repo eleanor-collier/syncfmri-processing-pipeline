@@ -62,6 +62,6 @@ PIPELINE STEPS
       * Discovery can handle UP TO 25 RUNS PER JOB (so if each subject has 3 runs, run max 8 subjects per job)
     * To check that cleaned EPIs were successfully output, run QA/check_GLM_output
 6. Run 6_extract_roi_timecourses.sh
-    * Extracts activation time courses from each roi in ROIs folder
+    * Extracts activation time courses from each roi in every subdirectory of the ROIs folder
     * To run batches of subjects, submit as job using mksub jobs/extract_roi_timecourses.pbs
       * Discovery can handle only 10 RUNS PER JOB. Do NOT try to run more or you will start crashing nodes and the Discovery folks will get quite upset at you
