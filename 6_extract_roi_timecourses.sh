@@ -1,6 +1,6 @@
 # Author: Eleanor Collier
 # Date: August 22, 2018
-# Extract timecourse for each ROI in ROI_DIR
+# Extract timecourse for each ROI in ROI_DIR and subdirectories
 #
 ################################################################################----------
 # USAGE: extract_roi_timecourse.sh 01 02 03 ...
@@ -15,7 +15,7 @@ RUNS="02 07 12" #runs to loop through
 PROJECT_DIR=/dartfs-hpc/rc/lab/M/MeyerM/Collier/EmpOrient #path to project
 ANAL_DIR=$PROJECT_DIR/analysis/restTimecourses #path to output time course data
 PREP_DIR=$PROJECT_DIR/analysis/restPrep #path to look for cleaned/preprocessed data
-ROI_DIR="${PROJECT_DIR}/ROIs" #path to look for ROI masks
+ROI_DIR=$PROJECT_DIR/ROIs #path to look for ROI masks
 
 ################################################################################
 main() {
