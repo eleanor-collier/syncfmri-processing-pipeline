@@ -46,8 +46,14 @@ get_roi_timecourses() {
     echo "${label} Extracting time courses from ${epi}"
     setup
     
-    # Get timecourses for all ROIs in all ROI directories
-    dirs=$(ls -d -- $ROI_DIR/*)
+    # Get timecourses for all ROIs in ROI directory & subdirectories
+    for mask in $ROI_DIR/roi_*.nii*; do
+        mask_name=$(basename $mask)
+        transform_roi
+        get_roi_timecourse &
+        sleep 5
+    done
+    dirs=$(ls -d -- $ROI_DIR/*/ 2>/dev/null)
     for dir in $dirs; do
       for mask in $dir/roi_*.nii*; do
       	mask_name=$(basename $mask)
