@@ -17,7 +17,7 @@ BEFORE BEGINNING PIPELINE
     * Requires installation of dcm2bids and dcm2niix
     * Generates BIDS-compliant json files and organizes data into a BIDS-compliant folder structure according to the details specified in a given config.json file
       * config.json files are contained within the bids_config folder. For more details on how to set one up, see this tutorial on Andy's Brain Blog: https://andysbrainbook.readthedocs.io/en/latest/OpenScience/OS/BIDS_Overview.html
-    * dicom files should be stored in a subfolder of the main project folder called sourcedata
+    * Dicom files should first be stored in a subfolder of the main project folder called sourcedata
 6. Make sure FSL is loaded before running the following scripts
 
 
