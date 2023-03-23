@@ -1,25 +1,24 @@
-# FSL-rest-pipeline-BIDS
-FSL pipeline to preprocess fMRI rest period data and extract ROI time courses. Works with BIDS format data. Scripts are written in bash. Includes job scripts to run batches of subjects on Dartmouth's Discovery Cluster. For details on how to navigate Discovery, see here: http://www.dartmouth-socialneurolab.com/the-cluster
+# syncfmri-processing-pipeline
+FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract ROI time courses. Works with BIDS format data. Scripts are written in bash. Includes job scripts to run batches of subjects on the computing cluster at UCR's Center for Advanced Neuroimaging.
 
 *Follow steps below carefully.*
 
 BEFORE BEGINNING PIPELINE
-1. Copy this repository to your project's scripts folder on Discovery
+1. Copy this repository to your project's scripts folder on cluster
 2. Edit all scripts with your desired directories & project names where prompted at the top of the script
 3. If you're running these scripts locally on a mac, you may get strange "command not found" errors at first. If that's the case, you may need to convert each script to unix format using the command dos2unix scriptname.sh
 4. Run setup/transfer_fMRI_data.sh for each subject:
     * Transfers data from BIDS folder on Rolando server to study folder on Discovery, and swaps out SIDs in filenames with subject numbers
     * You will be prompted for your Rolando password, which is by default Change!t
     * Script handles one subject at a time
-5. Run setup/unzip_files.sh
-    * Unzips anatomical & functional niftis so you can open them in SPM (step 3)
-    * Script can handle as many subjects as you specify
-6. Reorient anatomical & functional niftis in SPM
-    * Follow this guide: https://docs.google.com/document/d/1jp0XflzEsHiiv8q96jHW16ihkIazlIETKaaRH_hq72E/edit?usp=sharing
-7. Run setup/zip_files.sh
-    * Zips anatomical & functional niftis again for FSL pipeline
-    * Script can handle as many subjects as you specify
-8. Make sure FSL is loaded before running the following scripts
+5. Run setup/convert_dicom_to_nifti.sh
+    * Converts dicom files to zipped nifti files using dcm2bids, which implements dcm2niix under the hood
+    * Script handles one subject and one session at a time (assuming multiple sessions per subject)
+    * Requires installation of dcm2bids and dcm2niix
+    * Generates BIDS-compliant json files and organizes data into a BIDS-compliant folder structure according to the details specified in a given config.json file
+      * config.json files are contained within the bids_config folder. For more details on how to set one up, see this tutorial on Andy's Brain Blog: https://andysbrainbook.readthedocs.io/en/latest/OpenScience/OS/BIDS_Overview.html
+    * dicom files should be stored in a subfolder of the main project folder called sourcedata
+6. Make sure FSL is loaded before running the following scripts
 
 
 PIPELINE STEPS
