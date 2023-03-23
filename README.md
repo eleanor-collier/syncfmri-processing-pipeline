@@ -3,8 +3,9 @@ FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract R
 
 *Follow steps below carefully.*
 
-BEFORE BEGINNING PIPELINE
+## Before Beginning Pipeline
 1. Copy this repository to your project's scripts folder on cluster
+   * To log into cluster via terminal: ```ssh -Y username@master1-can.ucr.edu```
 2. Edit all scripts with your desired directories & project names where prompted at the top of the script
 3. If you're running these scripts locally on a mac, you may get strange "command not found" errors at first. If that's the case, you may need to convert each script to unix format using the command dos2unix scriptname.sh
 4. Run setup/transfer_fMRI_data.sh for each subject:
@@ -21,7 +22,7 @@ BEFORE BEGINNING PIPELINE
 6. Make sure FSL is loaded before running the following scripts
 
 
-PIPELINE STEPS
+## Pipeline Steps
 1. Run 1_strip_skulls.sh
     * Strips skull/non-brain matter from anatomical image
     * Adjust the FIT parameter which controls how much matter gets stripped; you may want to record this value somewhere
