@@ -37,14 +37,15 @@ FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract R
     * Uses merged fieldmap to unwarp magnetic field inhomogeneities in functional runs using ```applytopup```
     * A good explanation of this process can be found here: https://andysbrainbook.readthedocs.io/en/stable/FrequentlyAskedQuestions/FrequentlyAskedQuestions.html#unwarping-with-blip-up-blip-down-images
 6. Run ```4_preproc.sh```
-    * Applies the following preprocessing steps to EPIs for all runs specified in script:
+    * Applies the following preprocessing steps to EPIs for all runs specified in script using FEAT:
       * removal of low-frequency noise below 0.009 Hz with a high-pass filter
       * motion correction using MCFLIRT
       * skull-stripping using BET
       * spatial smoothing with a 6mm radius
       * registration to the anatomical image using BBR
     * Parameters can be tweaked if needed
-    * Fills out a copy of templates/preproc.fsf for each subject & run
+    * Fills out a copy of templates/preproc.fsf for each subject & run, which is then used by FEAT to preprocess the data
+    * Once the script finishes, FEAT will still be running in the background. You'll know FEAT is done when you see a file called "filtere_func.nii.gz" in the output folder. Wait to move on until FEAT has finished.
     * If running on cluster, cluster can handle all subjects in one job
 7. Run ```5_make_nuisance.sh```
     * Creates the following nuisance regressors from preprocessed EPIs for all runs specified in script
@@ -58,7 +59,7 @@ FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract R
     * To check for subjects you may want to exclude from analysis due to too many motion outliers, run QA/check_motion_outliers.sh
 8. Run ```6_clean_nuisance.sh```
     * Regresses out above nuisance variables in GLM & scrubs motion outliers
-    * Fills out a copy of templates/preproc.fsf for each subject & run
+    * Fills out a copy of templates/preproc.fsf for each subject & run, which is then used by FEAT to clean the data
     * If running on cluster, cluster can handle UP TO 25 RUNS PER JOB (so if each subject has 3 runs, run max 8 subjects per job)
     * To check that cleaned EPIs were successfully output, run QA/check_GLM_output
 9. Run ```7_extract_roi_timecourses.sh```
