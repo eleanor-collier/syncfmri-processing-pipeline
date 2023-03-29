@@ -33,8 +33,8 @@ FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract R
     * Generates white matter & CSF volumes from anatomical images for later use in making nuisance regressors
     * If running on cluster, cluster can handle all subjects in one job
 4. Run ```3_unwarp.sh```
-    * Creates merged fieldmap from AP/PA EPIs
-    * Uses merged fieldmap to unwarp magnetic field inhomogeneities in functional runs using topup
+    * Creates merged fieldmap from AP/PA EPIs using ```topup```
+    * Uses merged fieldmap to unwarp magnetic field inhomogeneities in functional runs using ```applytopup```
     * A good explanation of this process can be found here: https://andysbrainbook.readthedocs.io/en/stable/FrequentlyAskedQuestions/FrequentlyAskedQuestions.html#unwarping-with-blip-up-blip-down-images
 6. Run ```4_preproc.sh```
     * Applies the following preprocessing steps to EPIs for all runs specified in script:
