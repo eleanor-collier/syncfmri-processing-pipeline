@@ -45,6 +45,7 @@ FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract R
       * registration to the anatomical image using BBR
     * Parameters can be tweaked if needed
     * Fills out a copy of templates/preproc.fsf for each subject & run, which is then used by FEAT to preprocess the data
+      * Make sure to edit preproc.fsf such that the path to the standard anatomical image (MNI152_T1_2mm_brain) is correct! You can figure out where FSL's standard images are stored by opening the fsleyes GUI and selecting File > Add standard, then checking the path to the directory that pops up.
     * Once the script finishes, FEAT will still be running in the background. You'll know FEAT is done when you see a file called "filtere_func.nii.gz" in the output folder. Wait to move on until FEAT has finished.
     * If running on cluster, cluster can handle all subjects in one job
 7. Run ```5_make_nuisance.sh```
