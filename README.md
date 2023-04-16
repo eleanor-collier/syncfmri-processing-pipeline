@@ -32,14 +32,14 @@ FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract R
 2. Run ```2_segment_tissue.sh```
     * Generates white matter & CSF volumes from anatomical images for later use in making nuisance regressors
     * If running on cluster, cluster can handle all subjects in one job
-4. Run ```3_unwarp.sh```
+3. Run ```3_unwarp.sh```
     * Creates merged fieldmap from AP/PA EPIs using ```topup```
     * Uses merged fieldmap to unwarp magnetic field inhomogeneities in functional runs using ```applytopup```
     * A good explanation of this process can be found here: https://andysbrainbook.readthedocs.io/en/stable/FrequentlyAskedQuestions/FrequentlyAskedQuestions.html#unwarping-with-blip-up-blip-down-images
-6. Run ```4_preproc.sh```
+4. Run ```4_preproc.sh```
     * Applies the following preprocessing steps to EPIs for all runs specified in script using FEAT:
       * removal of low-frequency noise below 0.009 Hz with a high-pass filter
-      * motion correction using MCFLIRT
+      * estimation of head motion using MCFLIRT
       * skull-stripping using BET
       * spatial smoothing with a 6mm radius
       * registration to the anatomical image using BBR
@@ -48,7 +48,7 @@ FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract R
       * Make sure to edit preproc.fsf such that the path to the standard anatomical image (MNI152_T1_2mm_brain) is correct! You can figure out where FSL's standard images are stored by opening the fsleyes GUI and selecting File > Add standard, then checking the path to the directory that pops up.
     * Once the script finishes, FEAT will still be running in the background. You'll know FEAT is done when you see a file called "filtered_func.nii.gz" in the main output folder and "standard2highres.mat" in the reg folder. Wait to move on until FEAT has finished.
     * If running on cluster, cluster can handle all subjects in one job
-7. Run ```5_make_nuisance.sh```
+5. Run ```5_make_nuisance.sh```
     * Creates the following nuisance regressors from preprocessed EPIs for all runs specified in script
       * 6 motion parameters
       * motion outliers
@@ -58,11 +58,11 @@ FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract R
     * Nuisance regressors can be omitted or included as needed
     * If running on cluster, cluster can handle UP TO 25 RUNS PER JOB (so if each subject has 3 runs, run max 8 subjects per job)
     * To check for subjects you may want to exclude from analysis due to too many motion outliers, run QA/check_motion_outliers.sh
-8. Run ```6_clean_nuisance.sh```
+6. Run ```6_clean_nuisance.sh```
     * Regresses out above nuisance variables in GLM & scrubs motion outliers
     * Fills out a copy of templates/preproc.fsf for each subject & run, which is then used by FEAT to clean the data
     * If running on cluster, cluster can handle UP TO 25 RUNS PER JOB (so if each subject has 3 runs, run max 8 subjects per job)
     * To check that cleaned EPIs were successfully output, run QA/check_GLM_output
-9. Run ```7_extract_roi_timecourses.sh```
+7. Run ```7_extract_roi_timecourses.sh```
     * Extracts activation time courses from each roi in every subdirectory of the ROIs folder
     * If running on cluster, cluster can handle only 10 RUNS PER JOB. Do NOT try to run more or you will start crashing nodes
