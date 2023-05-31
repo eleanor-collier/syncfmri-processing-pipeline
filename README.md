@@ -8,17 +8,17 @@ FSL pipeline to preprocess fMRI data for neural synchrony analysis and extract R
    * To log into cluster via terminal: ```ssh -Y username@master1-can.ucr.edu```
 2. Edit all scripts with your desired directories & project names where prompted at the top of the script
 3. If you're running these scripts locally on a mac, you may get strange "command not found" errors at first. If that's the case, you may need to convert each script to unix format using the command ```dos2unix scriptname.sh```
-4. Run ```setup/transfer_fMRI_data.sh``` for each subject:
-    * Transfers data from folder on SNL NAS to study folder on UCR CAN cluster
-    * You will be prompted for your CAN cluster password
-    * Script handles one subject at a time
-5. Run ```setup/convert_dicom_to_nifti.sh```
+4. Run ```setup/convert_dicom_to_nifti.sh```
     * Converts dicom files to zipped nifti files using dcm2bids, which implements dcm2niix under the hood
     * Script handles one subject and one session at a time (assuming multiple sessions per subject)
     * Requires installation of dcm2bids and dcm2niix
     * Generates BIDS-compliant json files and organizes data into a BIDS-compliant folder structure according to the details specified in a given config.json file
       * config.json files are contained within the bids_config folder. For more details on how to set one up, see this tutorial on Andy's Brain Blog: https://andysbrainbook.readthedocs.io/en/latest/OpenScience/OS/BIDS_Overview.html
     * Dicom files should first be stored in a subfolder of the main project folder called sourcedata
+5. Run ```setup/transfer_fMRI_data.sh``` for each subject:
+    * Transfers data from folder on SNL NAS to study folder on UCR CAN cluster
+    * You will be prompted for your CAN cluster password
+    * Script handles one subject at a time
 6. Make sure FSL is loaded before running the following scripts
 
 
