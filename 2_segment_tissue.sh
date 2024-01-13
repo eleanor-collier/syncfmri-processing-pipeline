@@ -9,8 +9,8 @@
 subj_list=$@
 
 # Directories, files & parameters to change
-SESSION="ses-emporientoinb" #name of session in BIDS file structure, leave as "" if none
-DATA_DIR=/dartfs-hpc/rc/lab/M/MeyerM/Collier/EmpOrient/data/fMRI #path to look for raw data
+SESSION="ses-syncspeak" #name of session in BIDS file structure, leave as "" if none
+DATA_DIR=/home/ecollier/SyncDisclosures #path to look for raw data
 
 ################################################################################
 main() {

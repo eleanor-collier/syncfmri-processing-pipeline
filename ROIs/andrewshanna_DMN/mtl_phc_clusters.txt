@@ -1,2 +1,0 @@
-Cluster Index	Voxels	MAX	MAX X (vox)	MAX Y (vox)	MAX Z (vox)	COG X (vox)	COG Y (vox)	COG Z (vox)
-1	290	1	59	43	26	59.1	42.9	30

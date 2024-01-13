@@ -33,7 +33,7 @@ set fmri(sscleanup_yn) 0
 set fmri(outputdir) "<<output_dir>>"
 
 # TR(s)
-set fmri(tr) <<TR>>
+set fmri(tr) <<TR>> 
 
 # Total volumes
 set fmri(npts) <<nvols>>
@@ -270,7 +270,10 @@ set fmri(ncopeinputs) 0
 set feat_files(1) "<<func_data>>"
 
 # Add confound EVs text file
-set fmri(confoundevs) 0
+set fmri(confoundevs) 1
+
+# Confound EVs text file for analysis 1
+set confoundev_files(1) "<<OUTLIERS>>"
 
 # EV 1 title
 set fmri(evtitle1) "MOTION1"
@@ -639,7 +642,7 @@ set fmri(ortho6.7) 0
 set fmri(ortho6.8) 0
 
 # EV 7 title
-set fmri(evtitle7) "CSF"
+set fmri(evtitle7) "WM"
 
 # Basic waveform shape (EV 7)
 # 0 : Square
@@ -700,7 +703,7 @@ set fmri(ortho7.7) 0
 set fmri(ortho7.8) 0
 
 # EV 8 title
-set fmri(evtitle8) "WM"
+set fmri(evtitle8) "CSF"
 
 # Basic waveform shape (EV 8)
 # 0 : Square

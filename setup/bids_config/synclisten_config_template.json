@@ -1,0 +1,162 @@
+{
+    "descriptions": [
+        {
+        "dataType": "anat",
+        "modalityLabel": "T1w",
+        "criteria": {
+            "SeriesDescription": "t1_mprage"
+            }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker1_id}${task1}_run-1",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run01_*"
+          },
+        "sidecarChanges": {
+            "TaskName": "speaker${speaker1_id}${task1}"
+          }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker1_id}${task2}_run-2",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run02_*"
+          },
+        "sidecarChanges": {
+            "TaskName": "speaker${speaker1_id}${task2}"
+          }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker1_id}${task3}_run-3",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run03_*"
+          },
+        "sidecarChanges": {
+            "TaskName": "speaker${speaker1_id}${task3}"
+          }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker1_id}${task4}_run-4",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run04_*"
+        },
+            "sidecarChanges": {
+                "TaskName": "speaker${speaker1_id}${task4}"
+            }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker2_id}${task1}-5",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run05_*"
+          },
+        "sidecarChanges": {
+            "TaskName": "speaker${speaker2_id}${task1}"
+          }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker2_id}${task2}_run-6",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run06_*"
+          },
+        "sidecarChanges": {
+            "TaskName": "speaker${speaker2_id}${task2}"
+          }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker2_id}${task3}_run-7",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run07_*"
+          },
+        "sidecarChanges": {
+            "TaskName": "speaker${speaker2_id}${task3}"
+          }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker2_id}${task4}_run-8",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run08_*"
+        },
+            "sidecarChanges": {
+                "TaskName": "speaker${speaker2_id}${task4}"
+            }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker3_id}${task1}_run-9",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run09_*"
+          },
+        "sidecarChanges": {
+            "TaskName": "speaker${speaker3_id}${task1}"
+          }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker3_id}${task2}_run-10",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run10_*"
+          },
+        "sidecarChanges": {
+            "TaskName": "speaker${speaker3_id}${task2}"
+          }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker3_id}${task3}_run-11",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run11_*"
+          },
+        "sidecarChanges": {
+            "TaskName": "speaker${speaker3_id}${task3}"
+          }
+        },
+        {
+        "dataType": "func",
+        "modalityLabel": "bold",
+        "customLabels": "task-speaker${speaker3_id}${task4}_run-12",
+        "criteria": {
+            "SeriesDescription": "fMRI_listen_run12_*"
+        },
+            "sidecarChanges": {
+                "TaskName": "speaker${speaker3_id}${task4}"
+            }
+        },
+        {
+        "dataType": "fmap",
+        "modalityLabel": "epi",
+        "customLabels": "dir-AP",
+        "intendedFor": [1,2,3,4,5,6,7,8,9,10,11,12],
+        "criteria": {
+            "SidecarFilename": "*EPI_2.5mm_AP*"
+            }
+        },
+        {
+        "dataType": "fmap",
+        "modalityLabel": "epi",
+        "customLabels": "dir-PA",
+        "intendedFor": [1,2,3,4,5,6,7,8,9,10,11,12],
+        "criteria": {
+            "SidecarFilename": "*EPI_2.5mm_PA*"
+            }
+        }
+
+        ]
+  }

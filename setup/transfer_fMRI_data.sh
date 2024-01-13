@@ -1,57 +1,43 @@
 # Author: Eleanor Collier
-# Date: February 18, 2019
-# Copies one subject's brain data from Rolando to Discovery and renames 
-# subject ID in filenames
+# Date: April 12, 2023
+# Copies one subject's brain data from SNLNAS to UCR CAN Cluster
 ################################################################################----------
-#USAGE: transfer_fMRI_data.sh dbic_id subj_id
+#USAGE: transfer_fMRI_data.sh subj_id
 ################################################################################----------
 
-dbic_id=$1 #Example: sid001413
-subj_id=$2 #Example: 02
+subj_list=$@ #Example: 01 02 03
 
 # Directories, files & parameters to change
-GET_DATA_HERE=/inbox/BIDS/Meyer/Eleanor/1033-emporient/sub-${dbic_id} #subject folder on Rolando
-SEND_DATA_HERE=/dartfs-hpc/rc/lab/M/MeyerM/Collier/EmpOrient/data/sub-${subj_id} #subject folder on Discovery
-ROLANDO_LOGIN=ecollier@rolando.cns.dartmouth.edu #replace with your login name before @
-SESSION="ses-emporientoinb" #name of session in BIDS file structure, leave as "" if none
-
-LABEL="[SUBJECT ${subj_id}:]"
+GET_DATA_HERE="/Volumes/Research Project/Eleanor/SyncDisclosures_fMRI/Imaging/" #data folder on SNLNAS
+SEND_DATA_HERE=/home/ecollier/SyncDisclosures #data folder on CAN Cluster
+CAN_LOGIN=ecollier@master1-can.ucr.edu #replace with your login name before @
+SESSION=ses-syncspeak #name of session in BIDS file structure, leave as "" if none
 
 ################################################################################
 main() {
-  if [ ! -d $SEND_DATA_HERE ]; then
-    transfer_files
-    rename_files
-  else
-    echo "${LABEL} data already exists"
-  fi
+  for subj in $subj_list; do
+    def_vars
+    if [[ `ssh ${CAN_LOGIN} test -d ${destination_folder} && echo exists` ]] ; then
+      transfer_files &
+      sleep 1
+    else
+      echo "${LABEL} data already exists"
+    fi
+  done
+  wait
+}
+
+def_vars() {
+  LABEL="[SUBJECT ${subj} SESSION ${SESSION}:]"
+  origin_folder="${GET_DATA_HERE}/sub-${subj}/${SESSION}"
+  destination_folder="${SEND_DATA_HERE}/sub-${subj}/${SESSION}"
 }
 
 
 # Transfer files from Rolando to Discovery: EDIT scan names
 transfer_files() {
 	echo "${LABEL} transfering brain data"
-	scp -r "${ROLANDO_LOGIN}:${GET_DATA_HERE}" "${SEND_DATA_HERE}"
-}
-      
-
-rename_files() {
-  echo "${LABEL} renaming data files"
-  pushd "${SEND_DATA_HERE}" >/dev/null
-  #Rename files in main subject folder
-  for file in ${SESSION}/sub-$dbic_id*; do 
-	mv "$file" "${file/$dbic_id/$subj_id}"; 
-  done
-  #Rename files in subject's scan folders
-  for file in ${SESSION}/*/sub-$dbic_id*; do 
-  	mv "$file" "${file/$dbic_id/$subj_id}";
-  done
-  #Rename subject's anatomical files
-  for file in ${SESSION}/anat/*; do
-  	mv "$file" "${file/_acq-MPRAGE/}"; 
-  done
-  wait
-  popd
+	scp -r "${origin_folder}" "${CAN_LOGIN}:${destination_folder}"
 }
 
 

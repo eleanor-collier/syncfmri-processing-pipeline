@@ -9,9 +9,9 @@
 subj_list=$@
 
 # Directories, files & parameters to change
-SESSION="ses-emporientoinb" #name of session in BIDS file structure, leave as "" if none
-DATA_DIR=/dartfs-hpc/rc/lab/M/MeyerM/Collier/EmpOrient/data/fMRI #path to look for raw data
-FIT=0.3 # Fractional intensity threshold (smaller values give larger brain outline estimates)
+SESSION="ses-syncspeak" #name of session in BIDS file structure, leave as "" if none
+DATA_DIR=/home/ecollier/SyncDisclosures #path to look for raw data
+FIT=0.35 # Fractional intensity threshold (smaller values give larger brain outline estimates; 0.35 is a good start)
 
 ################################################################################
 main() {
@@ -25,7 +25,7 @@ main() {
 
 def_vars() {
   label="[SUBJECT $subj:]"
-  output_dir=$DATA_DIR/sub-$subj/${SESSION}/anat/
+  output_dir=$DATA_DIR/sub-$subj/${SESSION}/anat
 }
 
 

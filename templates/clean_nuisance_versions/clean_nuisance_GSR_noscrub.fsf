@@ -70,7 +70,7 @@ set fmri(noisear) 0.34
 # Motion correction
 # 0 : None
 # 1 : MCFLIRT
-set fmri(mc) 1
+set fmri(mc) 0
 
 # Spin-history (currently obsolete)
 set fmri(sh_yn) 0
@@ -147,8 +147,8 @@ set fmri(robust_yn) 0
 set fmri(mixed_yn) 2
 
 # Number of EVs
-set fmri(evs_orig) 8
-set fmri(evs_real) 16
+set fmri(evs_orig) 9
+set fmri(evs_real) 18
 set fmri(evs_vox) 0
 
 # Number of contrasts
@@ -333,6 +333,9 @@ set fmri(ortho1.7) 0
 # Orthogonalise EV 1 wrt EV 8
 set fmri(ortho1.8) 0
 
+# Orthogonalise EV 1 wrt EV 9
+set fmri(ortho1.9) 0
+
 # EV 2 title
 set fmri(evtitle2) "MOTION2"
 
@@ -393,6 +396,9 @@ set fmri(ortho2.7) 0
 
 # Orthogonalise EV 2 wrt EV 8
 set fmri(ortho2.8) 0
+
+# Orthogonalise EV 2 wrt EV 9
+set fmri(ortho2.9) 0
 
 # EV 3 title
 set fmri(evtitle3) "MOTION3"
@@ -455,6 +461,9 @@ set fmri(ortho3.7) 0
 # Orthogonalise EV 3 wrt EV 8
 set fmri(ortho3.8) 0
 
+# Orthogonalise EV 3 wrt EV 9
+set fmri(ortho3.9) 0
+
 # EV 4 title
 set fmri(evtitle4) "MOTION4"
 
@@ -515,6 +524,9 @@ set fmri(ortho4.7) 0
 
 # Orthogonalise EV 4 wrt EV 8
 set fmri(ortho4.8) 0
+
+# Orthogonalise EV 4 wrt EV 9
+set fmri(ortho4.9) 0
 
 # EV 5 title
 set fmri(evtitle5) "MOTION5"
@@ -577,6 +589,9 @@ set fmri(ortho5.7) 0
 # Orthogonalise EV 5 wrt EV 8
 set fmri(ortho5.8) 0
 
+# Orthogonalise EV 5 wrt EV 9
+set fmri(ortho5.9) 0
+
 # EV 6 title
 set fmri(evtitle6) "MOTION6"
 
@@ -638,8 +653,11 @@ set fmri(ortho6.7) 0
 # Orthogonalise EV 6 wrt EV 8
 set fmri(ortho6.8) 0
 
+# Orthogonalise EV 6 wrt EV 9
+set fmri(ortho6.9) 0
+
 # EV 7 title
-set fmri(evtitle7) "CSF"
+set fmri(evtitle7) "WM"
 
 # Basic waveform shape (EV 7)
 # 0 : Square
@@ -699,8 +717,11 @@ set fmri(ortho7.7) 0
 # Orthogonalise EV 7 wrt EV 8
 set fmri(ortho7.8) 0
 
+# Orthogonalise EV 7 wrt EV 9
+set fmri(ortho7.9) 0
+
 # EV 8 title
-set fmri(evtitle8) "WM"
+set fmri(evtitle8) "CSF"
 
 # Basic waveform shape (EV 8)
 # 0 : Square
@@ -759,6 +780,73 @@ set fmri(ortho8.7) 0
 
 # Orthogonalise EV 8 wrt EV 8
 set fmri(ortho8.8) 0
+
+# Orthogonalise EV 8 wrt EV 9
+set fmri(ortho8.9) 0
+
+# EV 9 title
+set fmri(evtitle9) "GLOBAL"
+
+# Basic waveform shape (EV 9)
+# 0 : Square
+# 1 : Sinusoid
+# 2 : Custom (1 entry per volume)
+# 3 : Custom (3 column format)
+# 4 : Interaction
+# 10 : Empty (all zeros)
+set fmri(shape9) 2
+
+# Convolution (EV 9)
+# 0 : None
+# 1 : Gaussian
+# 2 : Gamma
+# 3 : Double-Gamma HRF
+# 4 : Gamma basis functions
+# 5 : Sine basis functions
+# 6 : FIR basis functions
+set fmri(convolve9) 0
+
+# Convolve phase (EV 9)
+set fmri(convolve_phase9) 0
+
+# Apply temporal filtering (EV 9)
+set fmri(tempfilt_yn9) <<tempFilt>>
+
+# Add temporal derivative (EV 9)
+set fmri(deriv_yn9) <<tempDeriv>>
+
+# Custom EV file (EV 9)
+set fmri(custom9) "<<GLOBAL>>"
+
+# Orthogonalise EV 9 wrt EV 0
+set fmri(ortho9.0) 0
+
+# Orthogonalise EV 9 wrt EV 1
+set fmri(ortho9.1) 0
+
+# Orthogonalise EV 9 wrt EV 2
+set fmri(ortho9.2) 0
+
+# Orthogonalise EV 9 wrt EV 3
+set fmri(ortho9.3) 0
+
+# Orthogonalise EV 9 wrt EV 4
+set fmri(ortho9.4) 0
+
+# Orthogonalise EV 9 wrt EV 5
+set fmri(ortho9.5) 0
+
+# Orthogonalise EV 9 wrt EV 6
+set fmri(ortho9.6) 0
+
+# Orthogonalise EV 9 wrt EV 7
+set fmri(ortho9.7) 0
+
+# Orthogonalise EV 9 wrt EV 8
+set fmri(ortho9.8) 0
+
+# Orthogonalise EV 9 wrt EV 9
+set fmri(ortho9.9) 0
 
 # Contrast & F-tests mode
 # real : control real EVs
