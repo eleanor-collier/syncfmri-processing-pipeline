@@ -50,20 +50,11 @@ get_roi_timecourses() {
     setup
     
     # Get timecourses for all ROIs in ROI directory & subdirectories
-    for mask in $ROI_DIR/roi_*.nii*; do
+    for mask in $(find $ROI_DIR -type f -iname "roi_*.nii*"); do
         mask_name=$(basename $mask)
         transform_roi
         get_roi_timecourse &
         sleep 5
-    done
-    dirs=$(ls -d -- $ROI_DIR/*/ 2>/dev/null)
-    for dir in $dirs; do
-      for mask in $dir/roi_*.nii*; do
-      	mask_name=$(basename $mask)
-      	transform_roi
-      	get_roi_timecourse &
-      	sleep 5
-      done
     done
     wait
 
